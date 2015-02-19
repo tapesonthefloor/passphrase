@@ -1,0 +1,17 @@
+#!/bin/bash
+
+for z in {1..5}
+
+do
+
+for i in {1..5}
+
+do
+
+    echo $(grep "^[^']\{4,7\}$" /usr/share/dict/words|shuf -n3)
+
+done
+
+echo ""
+
+done
