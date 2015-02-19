@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Generates random phrases appropriate for memorable but secure passwords.
+# Picks three words of intermediate length from local dictionary file.
+# Displays multiple sets.
+
 for z in {1..5}
 
 do
