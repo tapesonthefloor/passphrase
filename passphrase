@@ -1,14 +1,14 @@
-!/bin/bash
+#!/bin/bash
 
 # Generates random phrases appropriate for memorable but secure passwords.
 # Picks three words of intermediate length from local dictionary file.
 # Displays multiple sets.
 
-for z in {1..5}; do
+for (( z = 1; z <= ${1:-1}; z++ )) do # Check for a length parameter. Default to 1.
 
 	for i in {1..5}; do
 
-		echo $(grep "^[^'A-Z]\{3,8\}$" /usr/share/dict/words|shuf -n3)
+		echo $( grep "^[a-z]\{3,8\}$" /usr/share/dict/words | shuf -n3 )
 
 	done
 
