@@ -1,14 +1,64 @@
 #!/bin/bash
 
-# Generates random phrases appropriate for memorable but secure passwords.
-# Picks three words of intermediate length from local dictionary file.
-# Displays multiple sets.
+# Name: passphrase
+# Author: Nick Warzin <tapesonthefloor@gmail.com>
+# License: GNU GENERAL PUBLIC LICENSE
+# Description: Generates random phrases appropriate for memorable but secure passwords.
 
-for (( z = 1; z <= ${1:-1}; z++ )) do # Check for a length parameter. Default to 1.
+SPACE=0 # default to no spaces between words
+COUNT=1 # default to one group of passphrases
+
+echo ""
+
+while [[ $# > 0 ]]; do # iterate through arguments, one or two steps at a time
+
+	key="$1" # argument key
+	
+	case $key in 
+		-s|--space) # we want spaces b/w words
+			SPACE=1
+			# since this option takes no value argument, we only want
+			# to shift ahead one argument
+			;;
+
+		-c|--count) # we want a certain number of groups
+			COUNT="$2"
+			# and since this does have a value, skip the value itself on
+			# the next scan... we know it's not an argument key
+			shift
+			;;		
+
+		*)
+			# we were given an argument we don't understand or don't care
+			# about. Let's just... ignore it completely, shall we?
+			;;
+	esac
+
+	shift # shift ahead one (more) argument
+
+done
+
+if [ "$COUNT" -lt 1 ]; then
+
+	echo -e "Don't be cheeky.\n"
+
+fi
+
+for (( z = 1; z <= $COUNT; z++ )); do # give us COUNT groupings of five passphrases
 
 	for i in {1..5}; do
 
-		echo $( grep "^[a-z]\{3,8\}$" /usr/share/dict/words | shuf -n3 )
+		PASSPHRASE=`grep "^[a-z]\{3,8\}$" /usr/share/dict/words | shuf -n3`
+		# select all words from the standard linux words file with a length between
+		# 3 and 8 characters. Give us three of those words at random.
+
+		if [ "$SPACE" -eq 0 ]; then # if we want spaces stripped
+
+			PASSPHRASE=`echo $PASSPHRASE | tr -d '[[:space:]]'` # trim all spaces
+			
+		fi
+
+		echo $PASSPHRASE # dump result to screen
 
 	done
 
