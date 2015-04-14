@@ -15,13 +15,13 @@ while [[ $# > 0 ]]; do # iterate through arguments, one or two steps at a time
 	key="$1" # argument key
 	
 	case $key in 
-		-s|--space) # we want spaces b/w words
+		-s) # we want spaces b/w words
 			SPACE=1
 			# since this option takes no value argument, we only want
 			# to shift ahead one argument
 			;;
 
-		-c|--count) # we want a certain number of groups
+		-c) # we want a certain number of groups
 			COUNT="$2"
 			# and since this does have a value, skip the value itself on
 			# the next scan... we know it's not an argument key

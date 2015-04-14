@@ -1,10 +1,16 @@
 # passphrase
-A simple bash script that generates random dictionary-derived passwords for me. It takes a single parameter, which is the number of phrase groups to output.
+A simple bash script that generates random dictionary-derived passwords for me. It takes two arguments:
+
+	**-c** <*number*>
+		Provides this many groups of five passphrases.
+
+	**-s**
+		Include spaces between all words.
 
 Here's an example. Feel free to mix and match and use these as passwords. They would be good passwords. I'm not using any of them. I swear.
 
-```
-$ passphrase 5
+```shell
+$ passphrase -c 5 -s
 
 tree eardrum format
 yachts guerilla sheepdog
