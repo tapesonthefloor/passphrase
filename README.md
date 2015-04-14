@@ -2,9 +2,11 @@
 A simple bash script that generates random dictionary-derived passwords for me. It takes two arguments:
 
 **-c** <*number*>
+
 Provides this many groups of five passphrases.
 
 **-s**
+
 Include spaces between all words.
 
 Here's an example. Feel free to mix and match and use these as passwords. They would be good passwords. I'm not using any of them. I swear.
