@@ -1,17 +1,17 @@
 # passphrase
 A simple bash script that generates random dictionary-derived passwords for me. It takes three arguments:
 
-**-c** <*number*>
+* **-c** <*number*>
 
   Provides *n* groups of passwords.
 
-**-s**
+* **-s**
 
   Include spaces between all words.
 
-**-w** <*number*>
+* **-w** <*number*>
 
-  Provides phrases of *n* words.
+  Provides phrases containing *n* number of words.
 
 Here's an example. Feel free to mix and match and use these as passwords. They would be good passwords. I'm not using any of them. I swear.
 
