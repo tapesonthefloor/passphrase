@@ -3,15 +3,15 @@ A simple bash script that generates random dictionary-derived passwords for me. 
 
 **-c** <*number*>
 
-Provides *n* groups of passwords.
+  Provides *n* groups of passwords.
 
 **-s**
 
-Include spaces between all words.
+  Include spaces between all words.
 
 **-w** <*number*>
 
-Provides phrases of *n* words.
+  Provides phrases of *n* words.
 
 Here's an example. Feel free to mix and match and use these as passwords. They would be good passwords. I'm not using any of them. I swear.
 
