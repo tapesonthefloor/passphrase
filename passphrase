@@ -7,6 +7,7 @@
 
 SPACE=0 # default to no spaces between words
 COUNT=1 # default to one group of passphrases
+WORDS=3 # default to three-word phrases
 
 echo ""
 
@@ -28,6 +29,12 @@ while [[ $# > 0 ]]; do # iterate through arguments, one or two steps at a time
 			shift
 			;;		
 
+    -w) # we are specifying a word count
+      WORDS="$2"
+      # skip the argument; see above
+      shift
+      ;;
+
 		*)
 			# we were given an argument we don't understand or don't care
 			# about. Let's just... ignore it completely, shall we?
@@ -38,7 +45,7 @@ while [[ $# > 0 ]]; do # iterate through arguments, one or two steps at a time
 
 done
 
-if [ "$COUNT" -lt 1 ]; then
+if [ "$COUNT" -lt 1 ] || [ "$WORDS" -t 1 ]  ; then
 
 	echo -e "Don't be cheeky.\n"
 
@@ -48,9 +55,9 @@ for (( z = 1; z <= $COUNT; z++ )); do # give us COUNT groupings of five passphra
 
 	for i in {1..5}; do
 
-		PASSPHRASE=`grep "^[a-z]\{3,8\}$" /usr/share/dict/words | shuf -n3`
+		PASSPHRASE=`grep "^[a-z]\{3,8\}$" /usr/share/dict/words | shuf -n$WORDS`
 		# select all words from the standard linux words file with a length between
-		# 3 and 8 characters. Give us three of those words at random.
+		# 3 and 8 characters. Give us some of those words at random.
 
 		if [ "$SPACE" -eq 0 ]; then # if we want spaces stripped
 
