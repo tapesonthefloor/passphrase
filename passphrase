@@ -13,21 +13,21 @@ echo ""
 
 while [[ $# > 0 ]]; do # iterate through arguments, one or two steps at a time
 
-	key="$1" # argument key
-	
-	case $key in 
-		-s) # we want spaces b/w words
-			SPACE=1
-			# since this option takes no value argument, we only want
-			# to shift ahead one argument
-			;;
+  key="$1" # argument key
 
-		-c) # we want a certain number of groups
-			COUNT="$2"
-			# and since this does have a value, skip the value itself on
-			# the next scan... we know it's not an argument key
-			shift
-			;;		
+  case $key in 
+    -s) # we want spaces b/w words
+      SPACE=1
+      # since this option takes no value argument, we only want
+      # to shift ahead one argument
+      ;;
+
+    -c) # we want a certain number of groups
+      COUNT="$2"
+      # and since this does have a value, skip the value itself on
+      # the next scan... we know it's not an argument key
+      shift
+      ;;		
 
     -w) # we are specifying a word count
       WORDS="$2"
@@ -35,40 +35,40 @@ while [[ $# > 0 ]]; do # iterate through arguments, one or two steps at a time
       shift
       ;;
 
-		*)
-			# we were given an argument we don't understand or don't care
-			# about. Let's just... ignore it completely, shall we?
-			;;
-	esac
+    *)
+      # we were given an argument we don't understand or don't care
+      # about. Let's just... ignore it completely, shall we?
+      ;;
+  esac
 
-	shift # shift ahead one (more) argument
+  shift # shift ahead one (more) argument
 
 done
 
-if [ "$COUNT" -lt 1 ] || [ "$WORDS" -t 1 ]  ; then
+if [ "$COUNT" -lt 1 ] || [ "$WORDS" -lt 1 ]; then
 
-	echo -e "Don't be cheeky.\n"
+  echo -e "Don't be cheeky.\n"
 
 fi
 
 for (( z = 1; z <= $COUNT; z++ )); do # give us COUNT groupings of five passphrases
 
-	for i in {1..5}; do
+  for i in {1..5}; do
 
-		PASSPHRASE=`grep "^[a-z]\{3,8\}$" /usr/share/dict/words | shuf -n$WORDS`
-		# select all words from the standard linux words file with a length between
-		# 3 and 8 characters. Give us some of those words at random.
+    PASSPHRASE=`grep "^[a-z]\{3,8\}$" /usr/share/dict/words | shuf -n$WORDS`
+    # select all words from the standard linux words file with a length between
+    # 3 and 8 characters. Give us some of those words at random.
 
-		if [ "$SPACE" -eq 0 ]; then # if we want spaces stripped
+    if [ "$SPACE" -eq 0 ]; then # if we want spaces stripped
 
-			PASSPHRASE=`echo $PASSPHRASE | tr -d '[[:space:]]'` # trim all spaces
-			
-		fi
+      PASSPHRASE=`echo $PASSPHRASE | tr -d '[[:space:]]'` # trim all spaces
 
-		echo $PASSPHRASE # dump result to screen
+    fi
 
-	done
+    echo $PASSPHRASE # dump result to screen
 
-	echo ""
+  done
+
+  echo ""
 
 done
