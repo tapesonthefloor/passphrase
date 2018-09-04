@@ -9,6 +9,8 @@ SPACE=0 # default to no spaces between words
 COUNT=1 # default to one group of passphrases
 WORDS=3 # default to three-word phrases
 
+DICT='/usr/share/dict/words' # standard location of the words file
+
 echo ""
 
 while [[ $# > 0 ]]; do # iterate through arguments, one or two steps at a time
@@ -48,6 +50,7 @@ done
 if [ "$COUNT" -lt 1 ] || [ "$WORDS" -lt 1 ]; then
 
   echo -e "Don't be cheeky.\n"
+  exit 1
 
 fi
 
