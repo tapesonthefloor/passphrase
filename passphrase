@@ -61,14 +61,14 @@ if [ "$COUNT" -lt 1 ] || [ "$WORDS" -lt 1 ]; then
 
 fi
 
-for (( y = 1; y <= $COUNT; y++ )); do 
+for (( y = 1; y <= $COUNT; y++ )); do # give us COUNT groups of passwords 
 
-  for i in {1..5}; do
+  for i in {1..5}; do # give us five passwords per group
 
-    for (( z = 1; z <= $WORDS; z++ )); do # give us WORDS words words
+    for (( z = 1; z <= $WORDS; z++ )); do # give us WORDS words words w...ords
 
       THERAND=$(( ((RANDOM<<15)|RANDOM) % DICTCOUNT )) # generate a pseudorandom number beteween 1 and the word count
-      printf `sed -n ''"$THERAND"' p' < $CLEANDICT`"$SPACE"
+      printf `sed -n ''"$THERAND"' p' < $CLEANDICT`"$SPACE" # pull line number THERAND from our sanitized dictionary
 
     done
     echo ''
@@ -80,27 +80,3 @@ for (( y = 1; y <= $COUNT; y++ )); do
 done
 
 exit 1
-
-
-
-for (( z = 1; z <= $COUNT; z++ )); do # give us COUNT groupings of five passphrases
-
-  for i in {1..5}; do
-
-    PASSPHRASE=`grep "^[a-z]\{3,8\}$" /usr/share/dict/words | shuf -n$WORDS`
-    # select all words from the standard linux words file with a length between
-    # 3 and 8 characters. Give us some of those words at random.
-
-    if [ "$SPACE" -eq 0 ]; then # if we want spaces stripped
-
-      PASSPHRASE=`echo $PASSPHRASE | tr -d '[[:space:]]'` # trim all spaces
-
-    fi
-
-    echo $PASSPHRASE # dump result to screen
-
-  done
-
-  echo ""
-
-done
