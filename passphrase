@@ -69,12 +69,11 @@ for i in {1..5}; do
     printf `sed -n ''"$THERAND"' p' < $CLEANDICT`"$SPACE"
 
   done
+  echo ''
 
 done
 
-echo "..."
-
-
+echo ''
 
 exit 1
 
