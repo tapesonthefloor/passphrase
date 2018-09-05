@@ -10,6 +10,13 @@ COUNT=1 # default to one group of passphrases
 WORDS=3 # default to three-word phrases
 
 DICT='/usr/share/dict/words' # standard location of the words file
+CLEANDICT="$(mktemp)" # create a temp file to store our sanitized dictionary
+
+PASSPHRASE=`grep "^[a-z]\{3,8\}$" $DICT` # sanitize the dictionary
+
+echo "$PASSPHRASE" >> $CLEANDICT # store the results in our temp file
+
+DICTCOUNT=`wc -l < $CLEANDICT` # grab dictionary line count
 
 echo ""
 
@@ -47,12 +54,31 @@ while [[ $# > 0 ]]; do # iterate through arguments, one or two steps at a time
 
 done
 
-if [ "$COUNT" -lt 1 ] || [ "$WORDS" -lt 1 ]; then
+if [ "$COUNT" -lt 1 ] || [ "$WORDS" -lt 1 ]; then 
 
   echo -e "Don't be cheeky.\n"
   exit 1
 
 fi
+
+for i in {1..5}; do
+
+  for (( z = 1; z <= $WORDS; z++ )); do # give us WORDS words words
+
+    THERAND=$(( ((RANDOM<<15)|RANDOM) % DICTCOUNT )) # generate a pseudorandom number beteween 1 and the word count
+    echo `sed -n ''"$THERAND"' p' < $CLEANDICT`
+
+  done
+
+done
+
+echo "..."
+
+
+
+exit 1
+
+
 
 for (( z = 1; z <= $COUNT; z++ )); do # give us COUNT groupings of five passphrases
 
