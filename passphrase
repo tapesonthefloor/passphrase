@@ -5,7 +5,7 @@
 # License: GNU GENERAL PUBLIC LICENSE
 # Description: Generates random phrases appropriate for memorable but secure passwords.
 
-SPACE=0 # default to no spaces between words
+SPACE='' # default to no spaces between words
 COUNT=1 # default to one group of passphrases
 WORDS=3 # default to three-word phrases
 
@@ -26,7 +26,7 @@ while [[ $# > 0 ]]; do # iterate through arguments, one or two steps at a time
 
   case $key in 
     -s) # we want spaces b/w words
-      SPACE=1
+      SPACE=' '
       # since this option takes no value argument, we only want
       # to shift ahead one argument
       ;;
@@ -66,7 +66,7 @@ for i in {1..5}; do
   for (( z = 1; z <= $WORDS; z++ )); do # give us WORDS words words
 
     THERAND=$(( ((RANDOM<<15)|RANDOM) % DICTCOUNT )) # generate a pseudorandom number beteween 1 and the word count
-    echo `sed -n ''"$THERAND"' p' < $CLEANDICT`
+    printf `sed -n ''"$THERAND"' p' < $CLEANDICT`"$SPACE"
 
   done
 
