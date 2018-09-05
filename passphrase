@@ -61,19 +61,23 @@ if [ "$COUNT" -lt 1 ] || [ "$WORDS" -lt 1 ]; then
 
 fi
 
-for i in {1..5}; do
+for (( y = 1; y <= $COUNT; y++ )); do 
 
-  for (( z = 1; z <= $WORDS; z++ )); do # give us WORDS words words
+  for i in {1..5}; do
 
-    THERAND=$(( ((RANDOM<<15)|RANDOM) % DICTCOUNT )) # generate a pseudorandom number beteween 1 and the word count
-    printf `sed -n ''"$THERAND"' p' < $CLEANDICT`"$SPACE"
+    for (( z = 1; z <= $WORDS; z++ )); do # give us WORDS words words
+
+      THERAND=$(( ((RANDOM<<15)|RANDOM) % DICTCOUNT )) # generate a pseudorandom number beteween 1 and the word count
+      printf `sed -n ''"$THERAND"' p' < $CLEANDICT`"$SPACE"
+
+    done
+    echo ''
 
   done
+
   echo ''
 
 done
-
-echo ''
 
 exit 1
 
