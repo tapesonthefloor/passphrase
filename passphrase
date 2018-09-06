@@ -80,7 +80,7 @@ for (( y = 1; y <= $COUNT; y++ )); do # give us COUNT groups of passwords
 
       else
 
-        printf "$THEWORD "
+        printf "$THEWORD$SPACE"
 
       fi
 
