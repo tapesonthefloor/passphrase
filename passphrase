@@ -70,17 +70,17 @@ for (( y = 1; y <= $COUNT; y++ )); do # give us COUNT groups of passwords
 
       THERAND=$(( ((RANDOM<<15)|RANDOM) % DICTCOUNT + 1 )) # generate a pseudorandom number beteween 1 and the word count
 
-      THEWORD=`sed -n ''"$THERAND"' p' < $CLEANDICT`
+      THEWORD=`sed -n ''"$THERAND"' p' < $CLEANDICT` # return a single line from the sanitized dictionary file
       
-      THEWORDSUM=`echo $THEWORD | cksum`
+      THEWORDSUM=`echo $THEWORD | cksum` # grab the word's CRC checksum
 
       if [ "$THEWORDSUM" = "2364352366 7" ] || [ "$THEWORDSUM" = "1786501751 7" ] || [ "$THEWORDSUM" = "3985821159 5" ] || [ "$THEWORDSUM" = "3381753483 6" ]; then
   
-        (( z-- ))
+        (( z-- )) # skip certain words
 
       else
 
-        printf "$THEWORD$SPACE"
+        printf "$THEWORD$SPACE" # print the chosen word to console, and a space if requested
 
       fi
 
