@@ -10,7 +10,7 @@ COUNT=1 # default to one group of passphrases
 WORDS=3 # default to three-word phrases
 
 DICT='/usr/share/dict/words' # standard location of the words file
-DICT='/home/nicholas/passphrase/testdict' # a test dictionary
+# DICT='/home/nicholas/passphrase/testdict' # a test dictionary
 CLEANDICT="$(mktemp)" # create a temp file to store our sanitized dictionary
 
 PASSPHRASE=`grep "^[a-z]\{3,8\}$" $DICT` # sanitize the dictionary
@@ -68,7 +68,7 @@ for (( y = 1; y <= $COUNT; y++ )); do # give us COUNT groups of passwords
 
     for (( z = 1; z <= $WORDS; z++ )); do # give us WORDS words words w...ords
 
-      THERAND=$(( ((RANDOM<<15)|RANDOM) % DICTCOUNT )) # generate a pseudorandom number beteween 1 and the word count
+      THERAND=$(( ((RANDOM<<15)|RANDOM) % DICTCOUNT + 1 )) # generate a pseudorandom number beteween 1 and the word count
 
       THEWORD=`sed -n ''"$THERAND"' p' < $CLEANDICT`
       
