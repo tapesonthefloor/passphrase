@@ -74,7 +74,6 @@ for (( y = 1; y <= $COUNT; y++ )); do # give us COUNT groups of passwords
     echo ''
 
   done
-
   echo ''
 
 done
