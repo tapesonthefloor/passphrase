@@ -18,33 +18,32 @@ Here's an example. Feel free to mix and match and use these as passwords. They w
 ```shell
 $ passphrase -c 5 -s
 
-tree eardrum format
-yachts guerilla sheepdog
-duos sites coats
-downier qualms whim
-tanked lissome others
+arrival peeving fazes
+privies ending engulfed
+rumpled stately uncanny
+chancel simper crazily
+shush bedroll deputing
 
-handsome scissor shin
-fees sicked mender
-tabs adders malaise
-nonfat surfer smoothed
-urn drams copied
+warmer shockers warded
+grimly grafts mothball
+vortex hooks mastery
+gym stilts dogtrot
+padlocks greeted nameless
 
-tossup waters stomachs
-cup clings shacks
-syrups crouch dynamo
-thwacked exempt kudzu
-parvenu augments cushion
+ivories centered cambiums
+plugins racks shuttle
+carotids neatness hansom
+duress heeled cuddles
+shrike hanky policy
 
-thievery conjugal layer
-cantos castoffs ham
-showmen pacified wheres
-sorriest garrotte howdah
-yap credos boringly
+nowhere teammate confuse
+wooziest commence lattice
+cottoned whit outlasts
+peptic carom knifed
+tights mistake grumble
 
-medicate repaying self
-nudge seekers garnets
-lacquers stunted puller
-aback unseats lifespan
-slab against ape
-```
+quells kissed amazons
+mood prowl sold
+viler cookies rehabs
+hollows cursed lived
+rove travails visaed
