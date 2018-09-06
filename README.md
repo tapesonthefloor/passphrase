@@ -1,5 +1,5 @@
 # passphrase
-A simple bash script that generates random dictionary-derived passwords for me. 
+A simple bash script that generates random dictionary-derived password phrases.  
 
 ## Arguments
 
@@ -56,5 +56,5 @@ violent miscue nunnery blinding
 ## To-do
 
 * provide passwords that meet specific lengths to satisfy [bad bank password requirements](https://stackoverflow.com/a/702438) (sadlol)
-* boolean arg for introducing token special characters, numbers, and caps to satisfy bad bank password requirements (stillsadlol)
+* boolean arg to boost cardinality and meet requirements: caps, symbols, digits, etc.
 * explore integraion with [pass](https://git.zx2c4.com/password-store/), which currently only leverages [pwgen](https://linux.die.net/man/1/pwgen), which, in my opinion, does not succeed at its primary task of being both highly memorable and high-entropy
